@@ -1,0 +1,52 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/zfcm/.nvm/versions/node/v4.4.0/bin/node',
+1 verbose cli   '/Users/zfcm/.nvm/versions/node/v4.4.0/lib/node_modules/ccnpm/node_modules/.bin/npm',
+1 verbose cli   '--userconfig=/Users/zfcm/.ccnpmrc',
+1 verbose cli   '--disturl=https://npm.taobao.org/mirrors/node',
+1 verbose cli   '--cache=/Users/zfcm/.ccnpm',
+1 verbose cli   '--registry=http://npmcc.creditcloud.com',
+1 verbose cli   'run',
+1 verbose cli   'dev' ]
+2 info using npm@3.8.8
+3 info using node@v4.4.0
+4 verbose run-script [ 'predev', 'dev', 'postdev' ]
+5 info lifecycle grain@1.0.0~predev: grain@1.0.0
+6 silly lifecycle grain@1.0.0~predev: no script for predev, continuing
+7 info lifecycle grain@1.0.0~dev: grain@1.0.0
+8 verbose lifecycle grain@1.0.0~dev: unsafe-perm in lifecycle true
+9 verbose lifecycle grain@1.0.0~dev: PATH: /Users/zfcm/.nvm/versions/node/v4.4.0/lib/node_modules/ccnpm/node_modules/npm/bin/node-gyp-bin:/Users/zfcm/work/grain/web/node_modules/.bin:/Users/zfcm/.nvm/versions/node/v4.4.0/bin:/Users/zfcm/.nvm/versions/node/v4.4.0/bin:/Users/zfcm/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin
+10 verbose lifecycle grain@1.0.0~dev: CWD: /Users/zfcm/work/grain/web
+11 silly lifecycle grain@1.0.0~dev: Args: [ '-c', 'gulp && supervisor index.js' ]
+12 silly lifecycle grain@1.0.0~dev: Returned: code: 1  signal: null
+13 info lifecycle grain@1.0.0~dev: Failed to exec dev script
+14 verbose stack Error: grain@1.0.0 dev: `gulp && supervisor index.js`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (/Users/zfcm/.nvm/versions/node/v4.4.0/lib/node_modules/ccnpm/node_modules/npm/lib/utils/lifecycle.js:244:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (/Users/zfcm/.nvm/versions/node/v4.4.0/lib/node_modules/ccnpm/node_modules/npm/lib/utils/spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:827:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid grain@1.0.0
+16 verbose cwd /Users/zfcm/work/grain/web
+17 error Darwin 14.4.0
+18 error argv "/Users/zfcm/.nvm/versions/node/v4.4.0/bin/node" "/Users/zfcm/.nvm/versions/node/v4.4.0/lib/node_modules/ccnpm/node_modules/.bin/npm" "--userconfig=/Users/zfcm/.ccnpmrc" "--disturl=https://npm.taobao.org/mirrors/node" "--cache=/Users/zfcm/.ccnpm" "--registry=http://npmcc.creditcloud.com" "run" "dev"
+19 error node v4.4.0
+20 error npm  v3.8.8
+21 error code ELIFECYCLE
+22 error grain@1.0.0 dev: `gulp && supervisor index.js`
+22 error Exit status 1
+23 error Failed at the grain@1.0.0 dev script 'gulp && supervisor index.js'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the grain package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     gulp && supervisor index.js
+23 error You can get information on how to open an issue for this project with:
+23 error     npm bugs grain
+23 error Or if that isn't available, you can get their info via:
+23 error     npm owner ls grain
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

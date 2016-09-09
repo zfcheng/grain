@@ -1,0 +1,8 @@
+var tape = require('tape');
+var o = require('./o');
+test('o.js test', function (t) {
+    var tt = {}
+    var ttt = 1;
+    t.equle(o.isObject(tt), true);
+    t.equle(o.isObject(ttt), false);
+})
