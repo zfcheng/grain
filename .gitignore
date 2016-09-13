@@ -1,0 +1,10 @@
+wp
+**/.DS_Store
+/.idea
+**/node_modules
+npm-debug.log
+*.psd
+web/node_modules
+web/dist
+web/dev
+web/dev/file
