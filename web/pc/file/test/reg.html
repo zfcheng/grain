@@ -1,0 +1,10 @@
+<script>
+    function checkEmail (email) {
+        var reg = /.+@.+\.[a-z]./g;
+        return reg.test(email)
+    }
+    var a = checkEmail('abc@meituan.com'); //a 为true，
+
+    var b = checkEmail('abc@q'); //b为false
+    console.log(a, b)
+</script>

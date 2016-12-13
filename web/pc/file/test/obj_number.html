@@ -1,0 +1,33 @@
+<script>
+    var o = {
+        a: {
+
+        },
+        b: {
+            c: {
+                e: {
+
+                }
+            }
+        },
+        d: {
+
+        }
+    }
+    var arr = [];
+
+    function fun (obj, num) {
+        arr[num] = arr[num] ? arr[num] : []
+        for(var key in obj) {
+            arr[num].push(key)
+            if(obj[key].constructor == Object) {
+                fun(obj[key], num+1)
+            }
+        }
+        if(!arr[num].length) {
+            arr.pop(arr.length - 1)
+        }
+    }
+    fun(o, 0)
+    console.log(arr)
+</script>

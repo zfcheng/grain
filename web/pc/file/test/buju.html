@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+       /* #wrap {
+            position: relative;
+        }
+        #side {
+            width: 200px;
+            position: absolute;
+            top: 0;
+            background-color: #eee;
+        }
+        #content {
+            margin-left: 200px;
+            background-color: #ccc;
+        }*/
+
+        #wrap {
+            margin-right: 200px;
+        }
+        #content {
+            float: right;
+            width: 100%;
+            margin-right: -200px;
+            background-color: #eee;
+        }
+        #side {
+            float: left;
+            width: 200px;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="content">content</div>
+        <div id="side">side</div>
+    </div>
+</body>
+</html>

@@ -23,7 +23,10 @@ app.use('/test', function (req, res, next) {
     res.expose('sadas', '123');
     res.json({a:1});
 })
-
+app.use(function (req, res, next) {
+  res.append('"Cache-Control', 'no-cache')
+  next()
+})
 app.use('/', require('../lib/loadRoute')());
 
 // Promise

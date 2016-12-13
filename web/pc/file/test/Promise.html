@@ -1,0 +1,107 @@
+<script>
+/**
+ * [3种状态]
+ * @type {String}
+ */
+
+var PENDING = "pending";
+var RESOLVED = "resolved";
+var REJECTED = "rejected";
+/**
+ * [Promise类实现]
+ * 构造函数传入一个fn，有两个参数，resolve：成功回调; reject：失败回调;
+ * state: 状态存储
+ * doneList: 成功处理函数列表
+ * failList: 失败处理函数列表
+ * done: 注册成功处理函数
+ * fail: 注册失败处理函数
+ * then: 同时注册成功和失败处理函数
+ * always: 一个处理注册到成功和失败，都会调用
+ * resolve: 更新state为：RESOLVED，并且执行成功处理队列
+ * reject: 更新state为：REJECTED，并且执行失败处理队列
+ */
+var Promise = (function (){
+    function Promise(fn){
+        if(!(this instanceof Promise)) return new Promise(fn);
+        this.state = PENDING;
+        this.doneList = [];
+        this.failList = [];
+        this.fn = fn;
+        this.fn(this.resolve.bind(this), this.reject.bind(this))
+    }
+
+    var p = {
+        done: function (cb){
+            if(typeof cb == "function")
+                this.doneList.push(cb)
+            return this;
+        },
+        fail: function(cb){
+            if(typeof cb == "function")
+                this.failList.push(cb);
+            return this;
+        },
+        then: function(success, fail){
+            this.done(success || noop).fail(fail || noop)
+            return this;
+        },
+        always: function(cb){
+            this.done(cb).fail(cb)
+            return this;
+        },
+        resolve: function(){
+            this.state = RESOLVED;
+            var lists = this.doneList;
+            for(var i = 0, len = lists.length; i<len; i++){
+                lists[0].apply(this, arguments);
+                lists.shift();
+            }
+            return this;
+        },
+        reject: function(){
+            this.state = REJECTED;
+            var lists = this.failList;
+            for(var i = 0, len = lists.length; i<len; i++){
+                lists[0].apply(this, arguments);
+                lists.shift();
+            }
+            return this;
+        }
+    }
+    for(var k in p){
+        Promise.prototype[k] = p[k]
+    }
+
+    return Promise;
+})();
+
+function noop(){}
+
+
+
+var getData100 = function(){
+    return Promise(function(resolve,reject){
+        setTimeout(function(){
+            resolve('100ms');
+        },100);
+    });
+}
+
+var getData200 = function(){
+    return Promise(function(resolve,reject){
+        setTimeout(function(){
+            resolve('200ms');
+        },200);
+    });
+}
+
+getData100().then(function(data){
+    console.log(data); // 100ms
+    return getData200();
+}).then(function(data){
+    console.log(data); // 200ms
+    return data + data;
+}).then(function(data){
+    console.log(data) // 200ms200ms
+});
+</script>

@@ -1,0 +1,77 @@
+<script>
+    function primeFactors(n){
+        //your code here
+        var str = '';
+
+        var v = [];
+        var p = [];
+        
+        function is (n) {
+            for(var j=2; j<=Math.floor(Math.sqrt(n)); j++) {
+                if(n%j == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+//         var len = 1500 < n ? 1500 : n; 
+
+        var len = Math.floor(Math.sqrt(n))
+        for(var i=2; i<=len; i++) {
+            for(var j=2; j<i; j++) {
+                if(i%j == 0) {
+                    break;
+                }
+            }
+            if(i==j) {
+                v.push(i)
+            }
+        }
+        console.log('==', v)
+        w(n)
+        function w(nn) {
+            console.log(nn)
+            if(is(nn)){
+                p.push(nn);
+                return;
+            }
+            var m = v.shift();
+            if(nn%m == 0) {
+                p.push(m);
+                if(nn/m % m == 0) {
+                    v.unshift(m);   
+                }
+                w(nn/m)
+            }else {
+                w(nn)
+            }
+        }
+
+        var obj = {};
+        p.map(function (item, index, arr) {
+            if(obj[item]) {
+                obj[item]++;
+            }else {
+                obj[item] = 1;
+            }
+        })
+
+        for(var key in obj) {
+            if(obj[key]==1) str = str + '(' + key + ')';
+            if(obj[key]!=1) str = str + '(' + key + '**' + obj[key] + ')';
+        }
+        console.log('--', obj)
+        return str;
+    }
+
+    function primeFactors1(n){
+      for (var i=2, res="", f; i <= n; i++) {
+        f=0;
+        while (n%i == 0) { f++; n/=i }
+        res += f ? "(" + ( f>1 ? i+"**"+f  : i ) +")" : ""
+      }
+      return res || "("+n+")"
+    }
+    console.log(primeFactors(17735330000)) //7775460 1773533
+    //"(2**2)(3**3)(5)(7)(11**2)(17)"
+</script>

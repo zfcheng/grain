@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function add (a) {
+            return function (b) {
+                return a + b;
+            }
+        }
+        function add1 () {
+
+            let arg = Array.prototype.slice.call(arguments);
+
+            return function () {
+                let sum = 0;
+                var v = Array.prototype.slice.call(arguments);
+                v = v.concat(v[0])
+
+                for(var i = 1, len = v.length; i < len; i++) {
+                    if(v[i]) {
+                        sum += v[i];
+                    }
+                }
+                return sum;
+            }.bind(this, arg)
+        }
+        console.log('===', add1(2, 2)(3, 1))
+
+        function add2 () {
+            let arg = Array.prototype.slice.call(arguments);
+            return function call() {
+                var ar = Array.prototype.slice.call(arguments);
+                console.log('----1', ar)
+
+                if(!ar[1]) {
+                    ar = ar.concat(ar[0])
+                    ar.shift()
+                    return function () {
+                        let sum = 0;
+                        var v = Array.prototype.slice.call(arguments);
+                        v = v.concat(v[0])
+
+                        for(var i = 1, len = v.length; i < len; i++) {
+                            if(v[i]) {
+                                sum += v[i];
+                            }
+                        }
+                        return sum;
+                    }.apply(this, ar)
+                }
+                ar = ar.concat(ar[0])
+                ar.shift()
+                console.log('----2', ar)
+
+                return call.bind(this, ar)
+            }.bind(this, arg)
+        }
+        console.log('------', add2(1, 1)(2, 3, 1)(3)(4)(5)(20)(20)(30)(10)())
+    </script>
+</body>
+</html>

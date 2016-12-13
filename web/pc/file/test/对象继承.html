@@ -1,0 +1,54 @@
+<script>
+    +function(flag){
+        if(flag) {
+            function A (name) {
+                this.say = function () {
+                    console.log('say ', this.name, this)
+                }
+            }
+            A.prototype.say1 = function () {
+                console.log('say ', this.name)
+            }
+
+            function B (name, age) {
+                A.call(this)
+                this.age = age
+                this.name = name
+            }
+
+            function C (name, age) {
+                B.call(this)
+                this.age = age
+                this.name = name
+            }
+            var b = new C('xiaoming', 18);
+            console.log(b, b.constructor, b instanceof B, b instanceof A, b instanceof C)
+            b.say()
+        }
+    }(1)
+
+
+
+    +function(flag){
+        if(flag) {
+            function A (name) {
+                this.name = name
+                this.say = function () {
+                    console.log('say ', this.name)
+                }
+            }
+            A.prototype.say1 = function () {
+                console.log('say ', this.name)
+            }
+
+            function B (name, age) {
+                this.age = age
+            }
+            B.prototype = new A();
+            var b = new B('xiaoming', 18);
+            console.log(b.constructor, b instanceof B, b instanceof A, b instanceof Object)
+            console.log('--', b, b.__proto__, b.__proto__.__proto__)
+            b.say()
+        }
+    }(0)
+</script>

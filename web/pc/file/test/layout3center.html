@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+        #left, #right {
+            float: left;
+            width: 50%;
+            margin-left: -480px;
+            background-color: #eee;
+        }
+        #content {
+            float: left;
+            width: 960px;
+            position: relative;
+            z-index: 1;
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="left">
+    <div style="margin-left: 480px;">left</div>
+    </div>
+   
+    <div id="content">content</div>
+
+    <div id="right">
+        
+        <div style="margin-left: 480px;">wedef</div>
+    </div>
+
+</body>
+</html>

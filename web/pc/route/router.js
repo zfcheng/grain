@@ -6,15 +6,8 @@ module.exports = function (router) {
         }, {a:1})
         // res.send('<div>;alalalalal</div>')
     });
-    router.get('/login/default', function (req, res, next) {
-        res.locals.user = {name: 'zhangsan', age: 12};
-        res.expose(999999, 'number');
-        res.render({
-            moduleName: 'login',
-            renderView: 'default'
-        }, {a:1})
-        // res.send('<div>;alalalalal</div>')
-    });
+
+
     router.get('/login/xxx', function (req, res, next) {
         req.uest('GET', '/api/testAccount').end(function (err, b) {
             console.log('------', b.body)
@@ -28,10 +21,41 @@ module.exports = function (router) {
         // res.send('<div>;alalalalal</div>')
     });
 
-    router.get('/index/v-index', function (req, res, next) {
+
+    router.get('/uploadFile', function (req, res, next) {
         res.render({
-            moduleName: 'index',
-            renderView: 'v-index'
+            moduleName: 'uploadFile',
+            renderView: 'index'
         }, {a:1})
     });
+
+    router.get('/domain/iframe', function (req, res, next) {
+        res.render({
+            moduleName: 'domain',
+            renderView: 'iframe'
+        })
+
+    })
+
+
+    router.get('/domain/postMessage1', function (req, res, next) {
+        res.render({
+            moduleName: 'domain',
+            renderView: 'postMessage1'
+        })
+
+    })
+
+    router.get('/domain/postMessage2', function (req, res, next) {
+        res.render({
+            moduleName: 'domain',
+            renderView: 'postMessage2'
+        })
+
+    })
+
+
+
+
+
 }

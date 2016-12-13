@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.header {
+    background: #ccc;
+    overflow: hidden;
+}
+
+.header .left {
+    width: 200px;
+    height: 100px;
+    background: red;
+    float: left;
+}
+
+.header .right {
+    width: 200px;
+    height: 60px;
+    background: #000;
+    float: right;
+}
+
+.header .center {
+    height: 60px;
+    overflow: hidden;
+}

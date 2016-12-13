@@ -1,0 +1,29 @@
+<script>
+    Array.prototype.duplicator = function () {
+        return this.concat(this)
+    }
+    console.log([1,2,3].duplicator())
+
+
+    //abcdefabcdefabcdefabcdef
+    var v
+    function position (str) {
+        var obj = {
+            position: [],
+            number: 0
+        }
+        var reg = /def/g;
+        v = str.replace(reg, function (item, index) {
+            obj.number++
+            obj.position.push(index)
+            return 'def'
+        })
+        return obj
+    }
+    var str = 'abcdefabcdefabcdefabcdef'
+
+    var x = position(str)
+        console.log(v === str)
+    
+    console.log(x, str)
+</script>

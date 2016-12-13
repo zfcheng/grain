@@ -1,0 +1,19 @@
+<!-- 
+    window.iframe 跨域 
+
+    设置 .src 是iframe 与 当前页面同域 已访问 iframe 中的数据
+    
+ -->
+<div>
+    <iframe src="http://htkg.uats.cc" frameborder="0" id="myIframe" onload='getName()'></iframe>
+    <script>
+        function getName () {
+            var myIframe = document.getElementById('myIframe');
+            myIframe.src='/domain/iframe'
+
+            myIframe.onload = function () {
+                console.log('#########', myIframe.contentWindow.name);
+            }
+        }
+    </script>
+</div>

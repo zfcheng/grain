@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str = 'asd_ad_bsdas_csd_asd_dccds_sdc_';
+        var p = [];
+        for(var i = 0, len = str.length; i < len; i++) {
+            if(str[i] == '_' && i+1 <len) {
+                console.log(1)
+                p.push('_' + str[i+1].toUpperCase())
+                i++
+            }else {
+                p.push(str[i])
+            }
+        }
+        console.log(p.join(''))
+
+        var reg = /\_./g;
+        var s = str.replace(reg, function (v) {
+            console.log('-----', '_' + v[1].toUpperCase())
+            return '_' + v[1].toUpperCase();
+        })
+        console.log('--this str is ', s)
+    </script>
+</body>
+</html>

@@ -102,3 +102,22 @@ resuperagent.extend = function extend () {
     fn.extend = resuperagent.extend;
     return fn;
 };
+
+Request.prototype.end = (function(origEnd) {
+    return function (fn) {
+        var self = this;
+        this.promise = this.promise || new Promise(function (resolve, reject) {
+            origEnd.call(self, function (err, response) {
+                if (err || !err.status) {
+                    reject(err);
+                } else {
+                    resolve(response);
+                }
+            });
+        });
+        if (typeof fn === 'function') {
+            this.promise.nodeify(fn);
+        }
+        return this.promise;
+    };
+}(Request.prototype.end));

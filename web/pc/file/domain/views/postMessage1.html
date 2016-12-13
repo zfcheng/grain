@@ -1,0 +1,9 @@
+<div>
+    <iframe src="http://localhost:4006/domain/postmessage2" frameborder="0" id="myIframe" onload='getName()'></iframe>
+    <script>
+        function getName () {
+            var myIframe = document.getElementById('myIframe');
+            myIframe.contentWindow.postMessage('this is postMessage', '*')
+        }
+    </script>
+</div>

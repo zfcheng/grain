@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [];
+        for(var i = 0; i < 3; i++) {
+            arr[i] = [];
+        }
+        arr[0].push(1,2,3)
+        arr[1].push(4,5,6)
+        arr[2].push(7,8,9)
+        console.log(arr)
+        for(var i = 0; i < 3; i++) {
+            for(var j = 0; j < 3; j++) {
+                if(i < j) {
+                    var v = arr[i][j];
+                    arr[i][j] = arr[j][i];
+                    arr[j][i] = v;
+                }
+            }
+        }
+        document.write(arr[0] + '<br/>' + arr[1] + '<br/>' + arr[2])
+    </script>
+</body>
+</html>

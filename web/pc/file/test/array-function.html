@@ -1,0 +1,74 @@
+<!-- 
+es3 -> 
+    slice (start, end)截取数组的某一部分，返回截取的数组，不改变原数组 两个参数（起始位置， 截至） 不改变原数组 
+    splice (start, number, a, b)  在start 开始删除number 个，并向原数组中插入a,b 返回删除的数组 改变原数组
+    concat 连接调用者与若干参数，不会压平数组参数中的数组，返回新的数组 不改变原数组
+    push
+    pop
+    unshift
+    shift
+    sort 修改原数组，返回原数组排序后的结果
+
+es5 ->
+    forEach  (item, index, arr) 三个参数 arr 为调用者的引用, 不返回信息，单纯的遍历
+    map (item, index, arr) 三个参数 arr 为调用者的引用, 返回新的数组 回调中要返回信息
+    filter return 过滤条件， 返回新的数组
+    every 每一个元素都必须满足条件，有一个不满足就返回false,不会继续执行，空数组，返回true
+    some  有一个元素满足条件即可，遇到一个满足就返回true,不会继续执行，空数组，返回false
+    reduce (a, b, c, d)累计操作,a第一次为数组的第一个值，往后就是上一次的执行结果，b, 当前操作数值，c d,调用着引用
+    reduceRight 有后面开始操作 
+    indexOf (text, start) 从前开始搜索返回第一次检索到的索引，第二个参数指定开始搜索的位置，没有默认从0开始搜索，没找到返回－1，
+    lastIndexOf 与indexOf方向相反，又结尾开始搜索
+
+
+-->
+<script>
+    var aTest = [1,2,3,4,5,6,7,8,9]
+    var slice = aTest.slice(1, 2)
+    console.log('slice: ', aTest.toString() === '1,2,3,4,5,6,7,8,9', slice.toString() === '2')
+
+    var splice = aTest.splice(1, 1, 66)
+
+    console.log('splice: ', aTest.toString() === '1,66,3,4,5,6,7,8,9', splice.toString() === '2')
+
+    var aTest1 = [1,2,3]
+    var concat = aTest1.concat([4,5,6], [7, [8,9]], 11, {a:1})
+    console.log('concat: ', aTest1, concat)
+    console.log('----------------------es6')
+
+    var es6Test = [1,0,3, 2]
+    var e = es6Test.forEach(function (item, index, arr) {
+        console.log('forEach', item, index, arr)
+    })
+
+
+    var s = es6Test.map(function (item, index, arr) {
+        return item
+    })
+
+    var t = es6Test.filter(function (item, index, arr) {
+        return index%2 ===0
+    })
+
+    var y = es6Test.every(function (item, index, arr) {
+        return item > 0
+    })
+    var u = es6Test.some(function (item, index, arr) {
+        return item > 0
+    })
+
+    var x = es6Test.reduce(function (a, b, c, d, e) {
+        console.log('reduce-', a, b, c, d, e)
+        return a + b
+    })
+
+    var qTest = [1,2,3]
+    var w = qTest.reduceRight(function (a, b) {
+        return Math.pow(a, b)
+    })
+
+    var l = qTest.lastIndexOf(99);
+    console.log(l)
+
+
+</script>

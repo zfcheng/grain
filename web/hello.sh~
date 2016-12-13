@@ -1,0 +1,8 @@
+#!/bin/bash
+echo 'hello world'
+num=0
+while :
+do
+    num=`expr $num + 1`
+    echo num $num
+done

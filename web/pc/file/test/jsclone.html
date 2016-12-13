@@ -1,0 +1,42 @@
+<script>
+    function clone (obj) {
+        var isArray = obj.constructor == Array ? true : false;
+        var newObj = isArray ? [] : {};
+        if(isArray) {
+            obj.map(function (item, index, arr) {
+                if(item.constructor == Object || item.constructor == Array){
+                    newObj.push(clone(item));
+                }
+                newObj.push(item);
+            })
+        }else{
+            for(var key in obj) {
+                if(!obj.hasOwnProperty(key)) {
+                    continue;
+                }
+                if(obj[key].constructor == Object || obj[key].constructor == Array){
+                    newObj[key] = clone(obj[key]);
+                }
+                newObj[key] = obj[key]
+
+                //newObj[key] = obj[key].constructor == Object || obj[key].constructor == Array ? clone(obj[key]) : obj[key]
+            }
+        }
+        return newObj;
+    }
+    function deepCopy(obj) {
+
+        
+    }
+    var a = {
+        a:1,
+        b: [1,2, {
+            c:1
+        }]
+    }
+    a.__proto__.d = 1
+    var b = a;
+    var aa = clone(a);
+    window.aa = aa
+    console.log('---', JSON.stringify(aa))
+</script>

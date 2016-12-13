@@ -1,0 +1,23 @@
+<div id='a'>
+    8790-
+    <div id="b">123</div>
+</div>
+<script>
+    var a = document.getElementById('a')
+    var b = document.getElementById('b')
+    a.addEventListener('click', function (e) {
+        var target = e.target || e.srcElement
+        console.log('a ', this, e.currentTarget, e.target, e.currentTarget === this)
+    },false)
+    b.addEventListener('click', function(e) {
+        console.log('b ', this, e.currentTarget, e.target)
+    },false)
+    b.addEventListener('click', function(e) {
+        console.log('b ', this, e.currentTarget, e.target)
+    },false)
+
+    /*
+        e.currentTarget 指当当前this， 注册事件的dom &&  e.currentTarget === this
+        e.target 是事件的触发者
+    */
+</script>

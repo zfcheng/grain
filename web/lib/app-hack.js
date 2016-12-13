@@ -25,28 +25,28 @@ exports.hack = function (app) {
         // packageCache: {},
         // fullPaths: true,
     };
-    app.use(function (req, res, next) {
-        var pathReg = /^\/file\/[^\/]+\/js\/.*\.js$/;
-        if(pathReg.test(req.url)){
-            res.setHeader('content-type', 'application/javascript');
-            res.type('js');
-            // var b = browserify(config.appRoot + req.url).bundle();
+    // app.use(function (req, res, next) {
+    //     var pathReg = /^\/file\/[^\/]+\/js\/.*\.js$/;
+    //     if(pathReg.test(req.url)){
+    //         res.setHeader('content-type', 'application/javascript');
+    //         res.type('js');
+    //         // var b = browserify(config.appRoot + req.url).bundle();
 
-            var bundle = Promise.coroutine(function* (filePath, opts) {
-                var b = browserify(args);
-                b.add(filePath);
-                b.transform(partialify)
-                .transform("babelify", {presets: ["es2015", "react"]})
-                var src = yield bundlePromise(b);
-                return src;
-            })
-            bundle(config.appRoot + req.url).then(function (src) {
-                res.send(src);
-            })
-        }else{
-            next();
-        }
-    });
+    //         var bundle = Promise.coroutine(function* (filePath, opts) {
+    //             var b = browserify(args);
+    //             b.add(filePath);
+    //             b.transform(partialify)
+    //             .transform("babelify", {presets: ["es2015", "react"]})
+    //             var src = yield bundlePromise(b);
+    //             return src;
+    //         })
+    //         bundle(config.appRoot + req.url).then(function (src) {
+    //             res.send(src);
+    //         })
+    //     }else{
+    //         next();
+    //     }
+    // });
 
     function bundlePromise(b) { // because b.bundle checks arity :(
         return new Promise(function (resolve, reject) {

@@ -1,0 +1,32 @@
+<script>
+    function ajax (methed, url, async) {
+        return new Promise(function(resolve, reject) {
+            var xhr = function () {
+                if(window.XMLHttpRequest) {
+                    return new window.XMLHttpRequest;
+                }
+                try {
+                    if(window.ActiveXObject) {
+                        return new window.ActiveXObject('microsoft.XMLHTTP');
+                    }
+                }catch(e) {
+                    throw('err')
+                }
+            }()
+            xhr.onreadystatechange = function () {
+                if(4 != xhr.readyState) return;
+                if(200 == xhr.status) {
+                    console.log(xhr.resposeText)
+                    resolve(xhr.resposeText)
+                }else {
+                    reject({
+                        'error': xhr.status,
+                        'xhr': xhr
+                    })
+                }
+            }
+            xhr.open(methed, url, async);
+            xhr.send()
+        })
+    }
+</script>

@@ -113,6 +113,7 @@ module.exports = function (gulp) {
         
         return gulp.src([
                 '**/*/js/main/*.js',
+                '**/*/js/lib/*.js',
                 '**/*.js',
                 '!route/*.js',
                 '!config/*.js',
@@ -203,6 +204,7 @@ module.exports = function (gulp) {
 
     files.js = [
             '**/*/js/main/*.js',
+            '**/*/js/lib/*.js',
             '**/*.js',
             '!route/*.js',
             '!config/*.js',
@@ -250,11 +252,14 @@ module.exports = function (gulp) {
     });
 
     var watchFile = [
-                        '**/**/main/*.js'
+                        '**/**/main/*.js',
+                        '**/**/lib/*.js',
+                        '**/route/*.js'
                     ];
     var watchFileHtml = [
                             '**/**/views/*.html',
-                            '**/**/partials/*.html'
+                            '**/**/partials/*.html',
+                            '**/**/css/*.css',
                         ]
     gulp.task('dev', ['prepare'], function () {
         var m = respawn([process.execPath, path.join(APP_ROOT_DEV, 'index.js')], {

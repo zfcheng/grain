@@ -64,7 +64,7 @@ function makeAppScript(template, data, app) {
 
                 // var reg = /<script((?!script>).)*script>/gm;
                 var reg = /<script(?:\s+[^>]*)?>((.|\n)*?)<\/script\s*>/ig
-                var aScript = temp.match(reg);
+                var aScript = temp.match(reg) ? temp.match(reg) : [];
                 console.log('000----x', aScript)
 
                 var temp = html2js(temp, {
